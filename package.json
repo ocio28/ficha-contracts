@@ -1,0 +1,11 @@
+{
+  "name": "ficha-contracts",
+  "version": "0.0.1",
+  "description": "contratos de la ficha",
+  "main": "index.js",
+  "author": "ocio28",
+  "license": "MIT",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.0.0"
+  }
+}
