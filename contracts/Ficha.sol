@@ -11,20 +11,27 @@ contract Ficha is ERC20, ERC20Detailed, Ownable {
   string public name = "Ficha";
   string public symbol = "FHA";
   uint8 public decimals = 18;
-  uint256 public INITIAL_SUPPLY = 10000 * (10 ** uint256(decimals));
+  uint256 public INITIAL_SUPPLY = 1000 * (10 ** uint256(decimals));
+  uint256 amount;
 
   mapping(bytes32 => address) public nicknames;
   mapping(address => bytes32) public ownerNickname;
 
   struct Profile {
     string description;
-    uint256 icon = 0;
+    //uint256 icon = 0;
   }
 
   mapping(address => Profile) public profiles;
 
   constructor() public ERC20Detailed(name, symbol, decimals) {
     _mint(msg.sender, INITIAL_SUPPLY);
+  }
+
+  function createFichas(uint256 _amount) public payable {
+    require(msg.value >= 0.001 ether);
+    amount = amount.add(msg.value);
+    _mint(msg.sender, _amount);
   }
 
   function register(string _description) public {
